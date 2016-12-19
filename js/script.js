@@ -11,7 +11,7 @@ function loadData() {
     $nytElem.text("");
 
     // load streetview
-    var $bgImg = $('<img src="" alt="" width="100%" class="bgimg">');
+    var $bgImg = $('<img src="" alt="" class="bgimg">');
     $body.append($bgImg);
 
     var street = $('#street').val();
