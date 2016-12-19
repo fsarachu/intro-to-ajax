@@ -11,10 +11,17 @@ function loadData() {
   $nytElem.text("");
 
   // load streetview
+  var $bgImg = $('<img src="" alt="" width="100%" class="bgimg">');
+  $body.append($bgImg);
 
-  // YOUR CODE GOES HERE!
+  var street = $('#street').val();
+  var city = $('#city').val();
+
+  if (city && street) {
+    $bgImg.attr('src', 'http://maps.googleapis.com/maps/api/streetview?key=AIzaSyB3PKBgLPyYLiMm1lgRBlxz59fNkxcaHrw&size=600x400&location=' + street + ', ' + city);
+  }
 
   return false;
-};
+}
 
-$('#form-container').submit(loadData);
+$('#form-container').submit(loadData).submit();
