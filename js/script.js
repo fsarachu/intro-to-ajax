@@ -27,15 +27,18 @@ function loadData() {
                 "api-key": "bc98a12e3c3248cc8dc5fbc172c7daab",
                 "q": city
             });
+
         $.getJSON(url, {"q": city})
             .done(function (result) {
                 console.log(result);
 
+                $nytHeaderElem.text("NY Times articles about " + city[0].toUpperCase() + city.slice(1).toLowerCase());
+
                 var articles = result.response.docs;
 
                 articles.forEach(function (article) {
-                    var $a = $("<a>", {"href": article.web_url});
-                    $a.text(article.abstract);
+                    var $a = $("<a>", {"href": article.web_url, "target": "_blank"});
+                    $a.text(article.headline.main);
 
                     var $li = $("<li>", {"class": "article"});
                     $li.append($a);
