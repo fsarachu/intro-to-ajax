@@ -18,23 +18,34 @@ function loadData() {
         $body.append($bgImg);
 
 
-        $bgImg.attr('src', 'http://maps.googleapis.com/maps/api/streetview?key=AIzaSyB3PKBgLPyYLiMm1lgRBlxz59fNkxcaHrw&size=600x400&location=' + street + ', ' + city);
+        $bgImg.attr("src", "http://maps.googleapis.com/maps/api/streetview?key=AIzaSyB3PKBgLPyYLiMm1lgRBlxz59fNkxcaHrw&size=600x400&location=" + street + ", " + city);
 
 
         // Load NY Times articles
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-        url += '?' + $.param({
-                'api-key': "bc98a12e3c3248cc8dc5fbc172c7daab",
-                'q': city
+        url += "?" + $.param({
+                "api-key": "bc98a12e3c3248cc8dc5fbc172c7daab",
+                "q": city
             });
-        $.getJSON(url, {'api-key': "bc98a12e3c3248cc8dc5fbc172c7daab", 'q': city})
+        $.getJSON(url, {"q": city})
             .done(function (result) {
                 console.log(result);
+
+                var articles = result.response.docs;
+
+                articles.forEach(function (article) {
+                    var $a = $("<a>", {"href": article.web_url});
+                    $a.text(article.abstract);
+
+                    var $li = $("<li>", {"class": "article"});
+                    $li.append($a);
+
+                    $nytElem.append($li);
+                });
             })
             .fail(function (err) {
                 throw err;
             });
-
     }
 
     return false;
