@@ -3,6 +3,11 @@ function loadData() {
     var city = $('#city').val();
 
     if (city && street) {
+        //Capitalize city and street
+        city = city[0].toUpperCase() * city.slice(1).toLowerCase();
+        street = street[0].toUpperCase() * street.slice(1).toLowerCase();
+
+        // Grab some DOM elements
         var $body = $('body');
         var $wikiElem = $('#wikipedia-links');
         var $nytHeaderElem = $('#nytimes-header');
@@ -19,8 +24,6 @@ function loadData() {
         // Load streetview
         var $bgImg = $('<img src="" alt="" class="bgimg">');
         $body.append($bgImg);
-
-
         $bgImg.attr("src", "http://maps.googleapis.com/maps/api/streetview?key=AIzaSyB3PKBgLPyYLiMm1lgRBlxz59fNkxcaHrw&size=600x400&location=" + street + ", " + city);
 
 
@@ -36,7 +39,7 @@ function loadData() {
             .done(function (result) {
                 console.log(result);
 
-                $nytHeaderElem.text("NY Times articles about " + city[0].toUpperCase() + city.slice(1).toLowerCase());
+                $nytHeaderElem.text("NY Times articles about " + city);
 
                 var articles = result.response.docs;
 
