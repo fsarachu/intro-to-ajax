@@ -9,7 +9,10 @@ function loadData() {
         var $nytElem = $('#nytimes-articles');
         var $greeting = $('#greeting');
 
-        // clear out old data before new request
+        // Add custom message
+        $greeting.text("So... You really wanna move to " + city + "? Think it twice!");
+
+        // Clear out old data before new request
         $wikiElem.text("");
         $nytElem.text("");
 
