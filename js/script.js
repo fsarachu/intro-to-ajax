@@ -48,7 +48,7 @@ function loadData() {
                 });
             })
             .fail(function (err) {
-                throw err;
+                $nytHeaderElem.text("NY Times articles couldn't be loaded");
             });
     }
 
