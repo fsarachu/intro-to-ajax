@@ -57,6 +57,17 @@ function loadData() {
                 console.log(err);
                 $nytHeaderElem.text("NY Times articles couldn't be loaded.");
             });
+
+        // Load wikipedia articles
+        function wikiCallback(data) {
+            console.log(data);
+        }
+
+        $.ajax({
+            url: "https://en.wikipedia.org/w/api.php",
+            dataType: "jsonp"
+        });
+
     }
 
     return false;
