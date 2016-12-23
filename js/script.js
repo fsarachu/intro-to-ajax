@@ -29,14 +29,14 @@ function loadData() {
 
 
         // Load NY Times articles
-        var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-        url += "?" + $.param({
+        var nytimesApi = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+
+        $.getJSON(nytimesApi, {
                 "api-key": "bc98a12e3c3248cc8dc5fbc172c7daab",
                 "q": city,
                 "sort": "newest"
-            });
-
-        $.getJSON(url, {"q": city})
+            }
+        )
             .done(function (result) {
                 console.log(result);
 
