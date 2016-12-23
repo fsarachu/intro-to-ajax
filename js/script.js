@@ -62,6 +62,10 @@ function loadData() {
         // Load wikipedia articles
         var wikiApi = "https://en.wikipedia.org/w/api.php";
 
+        var wikiRequestTimeout = setTimeout(function () {
+            $wikiHeader.text("Failed to get wikipedia articles...");
+        });
+
         $.getJSON(wikiApi + "?callback=?", {
             action: "opensearch",
             search: city,
@@ -78,6 +82,8 @@ function loadData() {
 
                 $wikiElem.append($li);
             }
+
+            clearTimeout(wikiRequestTimeout);
         });
     }
 
