@@ -9,6 +9,7 @@ function loadData() {
 
         // Grab some DOM elements
         var $body = $('body');
+        var $wikiHeader = $('#wikipedia-header');
         var $wikiElem = $('#wikipedia-links');
         var $nytHeaderElem = $('#nytimes-header');
         var $nytElem = $('#nytimes-articles');
