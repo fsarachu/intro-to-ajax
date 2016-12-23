@@ -59,15 +59,15 @@ function loadData() {
             });
 
         // Load wikipedia articles
-        function wikiCallback(data) {
+        var wikiApi = "https://en.wikipedia.org/w/api.php";
+
+        $.getJSON(wikiApi + "?callback=?", {
+            action: "opensearch",
+            search: city,
+            format: "json"
+        }, function (data) {
             console.log(data);
-        }
-
-        $.ajax({
-            url: "https://en.wikipedia.org/w/api.php",
-            dataType: "jsonp"
         });
-
     }
 
     return false;
