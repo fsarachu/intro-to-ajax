@@ -4,8 +4,8 @@ function loadData() {
 
     if (city && street) {
         //Capitalize city and street
-        city = city[0].toUpperCase() * city.slice(1).toLowerCase();
-        street = street[0].toUpperCase() * street.slice(1).toLowerCase();
+        city = city[0].toUpperCase() + city.slice(1).toLowerCase();
+        street = street[0].toUpperCase() + street.slice(1).toLowerCase();
 
         // Grab some DOM elements
         var $body = $('body');
