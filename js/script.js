@@ -67,7 +67,17 @@ function loadData() {
             search: city,
             format: "json"
         }, function (data) {
-            console.log(data);
+            $wikiHeader.text("Wikipedia articles about " + city);
+
+            for (var i = 0; i < data[1].length; i++) {
+                var $a = $("<a>", {"href": data[3][i], "target": "_blank"});
+                $a.text(data[1][i]);
+
+                var $li = $("<li>");
+                $li.append($a);
+
+                $wikiElem.append($li);
+            }
         });
     }
 
